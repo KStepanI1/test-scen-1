@@ -7,17 +7,39 @@ import TrashIcon from "../../assets/images/icon_trash.svg";
 import PencilIcon from "../../assets/images/icon_pencil.svg";
 import PlusIcon from "../../assets/images/icon_plus.svg";
 import {AddUserModal} from "../organisms/AddUserModal";
+import {EditUserModal} from "../organisms/EditUserModal";
 
 export const UsersPage = (): JSX.Element => {
     const [users, setUsers] = useState<User[]>(initialUsers);
     const [isAddUserModalOpen, setAddUserModalOpen] = useState<boolean>(false);
+    const [isEditUserModalOpen, setEditUserModalOpen] = useState<boolean>(false);
+    const [editingUser, setEditingUser] = useState<User | null>(null);
 
     const onAddButtonClick = () => {
         setAddUserModalOpen(true);
     };
 
+    function onEditButtonClick(this: User) {
+        setEditingUser(this);
+        setEditUserModalOpen(true);
+    }
+
     const addUser = (userData: User) => {
         setUsers([userData, ...users]);
+    }
+
+    const updateUser = (updatedUserData: User) => {
+        let copyUsers = [...users];
+        const user = users.find((e) => e.id === updatedUserData.id)
+        let userIndex: number = -1;
+        if (user !== undefined) {
+            userIndex = users.indexOf(user);
+        }
+        if (userIndex !== -1) {
+            copyUsers.splice(userIndex, 1, updatedUserData);
+            setUsers(copyUsers);
+        }
+        setEditingUser(null);
     }
 
     return (
@@ -57,6 +79,7 @@ export const UsersPage = (): JSX.Element => {
                                     <td className={'table__buttons-field'}>
                                         <div className={'buttons'}>
                                             <Button type={'button'}
+                                                    callback={onEditButtonClick.bind(user)}
                                                     text={null} icon={PencilIcon}/>
                                             <Button type={'button'}
                                                     text={null} icon={TrashIcon}/>
@@ -73,6 +96,10 @@ export const UsersPage = (): JSX.Element => {
                 {isAddUserModalOpen
                 && <AddUserModal addUser={addUser}
                                  closeModal={() => setAddUserModalOpen(false)}/>}
+                {isEditUserModalOpen && editingUser
+                && <EditUserModal userData={editingUser}
+                    closeModal={() => setEditUserModalOpen(false)}
+                                  updateUser={updateUser}/>}
             </main>
         </div>
     );

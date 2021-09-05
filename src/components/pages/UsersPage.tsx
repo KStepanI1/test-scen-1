@@ -15,7 +15,7 @@ export const UsersPage = (): JSX.Element => {
                 <div className={'users-page__users'}>
                     <div className={'users-page__subheader'}>
                         <h2 className={'subheader__name'}>Пользователи</h2>
-                        <Button />
+                        <Button icon={null} text={'Добавить'} />
                     </div>
                     <table className={'users-page__table'}>
                         <thead>

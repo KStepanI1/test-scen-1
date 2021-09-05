@@ -6,7 +6,7 @@ export interface User {
     login: string;
 }
 
-export const users: User[] =
+export const initialUsers: User[] =
     [
         {lastName: 'Иванов', firstName: 'Иван', middleName: 'Иванович', email: 'mail1@mail.com', login: 'user1'},
         {lastName: 'Петров', firstName: 'Петр', middleName: 'Сергеевич', email: 'mail2@mail.com', login: 'user2'},

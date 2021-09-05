@@ -1,0 +1,14 @@
+
+.header {
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  min-width: 320px;
+  height: 56px;
+}
+
+.header__content {
+  background-color: var(--primary);
+  height: 100%;
+  width: 100%;
+}

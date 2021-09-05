@@ -1,0 +1,16 @@
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: inherit;
+  border-radius: 6px;
+  padding: 0 32px;
+  cursor: pointer;
+
+  .button__text {
+    margin-left: 11px;
+    color: #ffffff;
+  }
+}

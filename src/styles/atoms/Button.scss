@@ -4,13 +4,24 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background-color: inherit;
   border-radius: 6px;
+  min-height: 36px;
   padding: 0 32px;
   cursor: pointer;
+  background-color: var(--blue);
 
   .button__text {
-    margin-left: 11px;
     color: #ffffff;
   }
+
+  .with-icon {
+    margin-left: 11px;
+  }
+}
+
+.button:disabled,
+.button[disabled]{
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
 }

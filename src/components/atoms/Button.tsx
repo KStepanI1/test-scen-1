@@ -1,14 +1,20 @@
+import React from "react";
 
 interface Props {
+    type?: "button" | "submit" | "reset" | undefined;
     text: string | null;
     icon?: any;
+    callback?: any;
+    disabled?: boolean;
 }
 
-export const Button = ({ text, icon }: Props): JSX.Element => {
+export const Button = ({ type, text, icon, callback, disabled }: Props): JSX.Element => {
     return (
-        <button className={'button'}>
-            <img className={'button__icon'} src={icon} alt="plus"/>
-            {text && <div className={'button__text'}>{text}</div>}
+        <button type={type}
+                className={'button'}
+                onClick={callback} disabled={disabled || false}>
+            {icon && <img className={'button__icon'} src={icon} alt="plus"/>}
+            {text && <div className={`button__text ${icon ? 'with-icon' : ''}`}>{text}</div>}
         </button>
     );
 }

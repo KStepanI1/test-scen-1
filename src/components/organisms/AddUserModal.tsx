@@ -1,0 +1,103 @@
+import {useState} from "react";
+import {User} from "../../data/users";
+import React from "react";
+import {Button} from "../atoms/Button";
+
+
+interface Props {
+    addUser: Function;
+    closeModal: any;
+}
+
+
+export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
+    const [userData, setUserData] = useState<User>({
+        lastName: '',
+        firstName: '',
+        middleName: '',
+        email: '',
+        login: ''
+    })
+    const [isButtonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setUserData({...userData, [name]: value})
+        if (userData.lastName !== ''
+            && userData.firstName !== ''
+            && userData.middleName !== ''
+            && userData.email !== ''
+            && userData.login !== '') {
+            setButtonDisabled(false);
+        }
+    }
+
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+        addUser(userData);
+        closeModal();
+    }
+
+    return (
+        <div className={'add-user-modal'}>
+            <div className={'add-user-modal__content'}>
+                <div className={'modal__header'}>
+                    <div className={'modal__title'}>Создание пользователя</div>
+                    <div onClick={closeModal} className={'modal__close'}>X</div>
+                </div>
+                <div className={'modal__content'}>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <div className={'modal__field'}>
+                                <div>Фамилия</div>
+                                <input className={'modal__input'}
+                                       type="text"
+                                       name={'lastName'}
+                                       placeholder={'Введите фамилию'}
+                                       onChange={handleChange}/>
+                            </div>
+                            <div className={'modal__field'}>
+                                <div>Имя</div>
+                                <input className={'modal__input'}
+                                       type="text"
+                                       name={'firstName'}
+                                       placeholder={'Введите имя'}
+                                       onChange={handleChange}/>
+                            </div>
+                            <div className={'modal__field'}>
+                                <div>Отчество</div>
+                                <input className={'modal__input'}
+                                       type="text"
+                                       name={'middleName'}
+                                       placeholder={'Введите отчество'}
+                                       onChange={handleChange}/>
+                            </div>
+                            <div className={'modal__field'}>
+                                <div>E-mail</div>
+                                <input className={'modal__input'}
+                                       type="text"
+                                       placeholder={'Введите электронную почту'}
+                                       name={'email'}
+                                       onChange={handleChange}/>
+                            </div>
+                            <div className={'modal__field'}>
+                                <div>Логин</div>
+                                <input className={'modal__input'}
+                                       type="text"
+                                       name={'login'}
+                                       placeholder={'Введите логин'}
+                                       onChange={handleChange}/>
+                            </div>
+                        </label>
+                        <div className={'modal__footer'}>
+                            <Button type="submit"
+                                    text={'Создать'}
+                                    disabled={isButtonDisabled}/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+}

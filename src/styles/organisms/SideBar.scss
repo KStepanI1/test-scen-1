@@ -1,7 +1,12 @@
 
 
 .sidebar {
-  width: 14.583%;
+  display: block;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 280px;
+  height: calc(100% - 56px);
   background-color: #ffffff;
 }
 

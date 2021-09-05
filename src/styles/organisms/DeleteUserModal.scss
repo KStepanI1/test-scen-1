@@ -1,5 +1,5 @@
 
-.edit-user-modal {
+.delete-user-modal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   height: 100%;
 }
 
-.edit-user-modal__content {
+.delete-user-modal__content {
   display: flex;
   flex-direction: column;
   width: 606px;
@@ -46,59 +46,32 @@
     }
   }
 
-  .modal__content {
-    height: 100%;
-
-    form {
-      height: 100%;
-    }
-  }
-
-  .modal__field {
-    padding: 14px 64px;
-    font-size: 14px;
-    line-height: 20px;
-
-    div {
-      color: var(--second-blue-gray);
-    }
-  }
-
-  .modal__input {
-    height: 36px;
+  .modal__text {
+    display: inline-flex;
+    margin: auto 0;
     width: 100%;
-    padding: 8px 12px;
-    color: var(--primary);
-    border-radius: 6px;
-    background-color: var(--second-gray);
-    border: 2px solid var(--border-color);
+    justify-content: center;
+    padding: 72px 162px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
-  ::-webkit-input-placeholder { /* WebKit browsers */
-    color: var(--darker-gray);
+  .cancel {
+    color: var(--how-much-color);
+    background-color: var(--button-gray-color);
   }
-
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: var(--darker-gray);
-  }
-
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: var(--darker-gray);
-  }
-
-  :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: var(--darker-gray);
-  }
-
 
   .modal__footer {
     display: flex;
     justify-content: flex-end;
-    padding: 12px 24px;
+
     height: 60px;
     background-color: var(--gray);
     width: 100%;
     margin-top: 42px;
+
+    .button {
+      margin: 12px 24px 12px 0;
+    }
   }
 }
-

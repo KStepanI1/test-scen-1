@@ -6,12 +6,13 @@ interface Props {
     icon?: any;
     callback?: any;
     disabled?: boolean;
+    className?: string;
 }
 
-export const Button = ({ type, text, icon, callback, disabled }: Props): JSX.Element => {
+export const Button = ({ type, text, icon, callback, disabled, className }: Props): JSX.Element => {
     return (
         <button type={type}
-                className={'button'}
+                className={`button ${className}`}
                 onClick={callback} disabled={disabled || false}>
             {icon && <img className={'button__icon'} src={icon} alt="plus"/>}
             {text && <div className={`button__text ${icon ? 'with-icon' : ''}`}>{text}</div>}

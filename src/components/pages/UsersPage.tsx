@@ -8,12 +8,15 @@ import PencilIcon from "../../assets/images/icon_pencil.svg";
 import PlusIcon from "../../assets/images/icon_plus.svg";
 import {AddUserModal} from "../organisms/AddUserModal";
 import {EditUserModal} from "../organisms/EditUserModal";
+import {DeleteUserModal} from "../organisms/DeleteUserModal";
 
 export const UsersPage = (): JSX.Element => {
     const [users, setUsers] = useState<User[]>(initialUsers);
     const [isAddUserModalOpen, setAddUserModalOpen] = useState<boolean>(false);
     const [isEditUserModalOpen, setEditUserModalOpen] = useState<boolean>(false);
+    const [isDeleteUserModalOpen, setDeleteUserModalOpen] = useState<boolean>(false);
     const [editingUser, setEditingUser] = useState<User | null>(null);
+    const [deletingUser, setDeletingUser] = useState<User | null>(null);
 
     const onAddButtonClick = () => {
         setAddUserModalOpen(true);
@@ -22,6 +25,11 @@ export const UsersPage = (): JSX.Element => {
     function onEditButtonClick(this: User) {
         setEditingUser(this);
         setEditUserModalOpen(true);
+    }
+
+    function onDeleteButtonClick(this: User) {
+        setDeletingUser(this);
+        setDeleteUserModalOpen(true);
     }
 
     const addUser = (userData: User) => {
@@ -37,6 +45,20 @@ export const UsersPage = (): JSX.Element => {
         }
         if (userIndex !== -1) {
             copyUsers.splice(userIndex, 1, updatedUserData);
+            setUsers(copyUsers);
+        }
+        setEditingUser(null);
+    }
+
+    const deleteUser = (userData: User) => {
+        let copyUsers = [...users];
+        const user = users.find((e) => e.id === userData.id)
+        let userIndex: number = -1;
+        if (user !== undefined) {
+            userIndex = users.indexOf(user);
+        }
+        if (userIndex !== -1) {
+            copyUsers.splice(userIndex, 1);
             setUsers(copyUsers);
         }
         setEditingUser(null);
@@ -82,6 +104,7 @@ export const UsersPage = (): JSX.Element => {
                                                     callback={onEditButtonClick.bind(user)}
                                                     text={null} icon={PencilIcon}/>
                                             <Button type={'button'}
+                                                    callback={onDeleteButtonClick.bind(user)}
                                                     text={null} icon={TrashIcon}/>
                                         </div>
 
@@ -100,6 +123,10 @@ export const UsersPage = (): JSX.Element => {
                 && <EditUserModal userData={editingUser}
                     closeModal={() => setEditUserModalOpen(false)}
                                   updateUser={updateUser}/>}
+                {isDeleteUserModalOpen && deletingUser
+                && <DeleteUserModal deleteUser={deleteUser}
+                                    userData={deletingUser}
+                                    closeModal={() => setDeleteUserModalOpen(false)} />}
             </main>
         </div>
     );

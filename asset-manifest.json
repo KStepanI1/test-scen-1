@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/test-scen-1/static/css/main.0c83d44d.chunk.css",
+    "main.js": "/test-scen-1/static/js/main.e4287426.chunk.js",
+    "main.js.map": "/test-scen-1/static/js/main.e4287426.chunk.js.map",
+    "runtime-main.js": "/test-scen-1/static/js/runtime-main.ebb73324.js",
+    "runtime-main.js.map": "/test-scen-1/static/js/runtime-main.ebb73324.js.map",
+    "static/js/2.10515fb3.chunk.js": "/test-scen-1/static/js/2.10515fb3.chunk.js",
+    "static/js/2.10515fb3.chunk.js.map": "/test-scen-1/static/js/2.10515fb3.chunk.js.map",
+    "index.html": "/test-scen-1/index.html",
+    "static/css/main.0c83d44d.chunk.css.map": "/test-scen-1/static/css/main.0c83d44d.chunk.css.map",
+    "static/js/2.10515fb3.chunk.js.LICENSE.txt": "/test-scen-1/static/js/2.10515fb3.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/test-scen-1/static/media/Roboto-Regular.fa7e6e7d.ttf",
+    "static/media/icon_pencil.5c4ed263.svg": "/test-scen-1/static/media/icon_pencil.5c4ed263.svg",
+    "static/media/icon_plus.bdf6500d.svg": "/test-scen-1/static/media/icon_plus.bdf6500d.svg",
+    "static/media/icon_trash.7c8bc93a.svg": "/test-scen-1/static/media/icon_trash.7c8bc93a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebb73324.js",
+    "static/js/2.10515fb3.chunk.js",
+    "static/css/main.0c83d44d.chunk.css",
+    "static/js/main.e4287426.chunk.js"
+  ]
+}

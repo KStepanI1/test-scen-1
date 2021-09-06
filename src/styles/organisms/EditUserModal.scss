@@ -16,8 +16,10 @@
   flex-direction: column;
   width: 606px;
   background-color: #FFFFFF;
+  border-radius: 10px;
 
   .modal__header {
+    border-radius: 10px 10px 0 0;
     display: flex;
     position: relative;
     width: 100%;
@@ -36,12 +38,9 @@
     }
 
     .modal__close {
-      width: 9px;
-      height: 9px;
       position: absolute;
-      line-height: 9px;
-      top: 23.5px;
-      right: 29.5px;
+      top: 18px;
+      right: 24px;
       cursor: pointer;
     }
   }
@@ -60,7 +59,7 @@
     line-height: 20px;
 
     div {
-      color: var(--second-blue-gray);
+      color: var(--blue-gray90);
     }
   }
 
@@ -70,24 +69,24 @@
     padding: 8px 12px;
     color: var(--primary);
     border-radius: 6px;
-    background-color: var(--second-gray);
+    background-color: var(--white5);
     border: 2px solid var(--border-color);
   }
 
   ::-webkit-input-placeholder { /* WebKit browsers */
-    color: var(--darker-gray);
+    color: var(--blue-gray40);
   }
 
   :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: var(--darker-gray);
+    color: var(--blue-gray40);
   }
 
   ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: var(--darker-gray);
+    color: var(--blue-gray40);
   }
 
   :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: var(--darker-gray);
+    color: var(--blue-gray40);
   }
 
 
@@ -96,9 +95,10 @@
     justify-content: flex-end;
     padding: 12px 24px;
     height: 60px;
-    background-color: var(--gray);
+    background-color: var(--white10);
     width: 100%;
     margin-top: 42px;
+    border-radius: 0 0 10px 10px;
   }
 }
 

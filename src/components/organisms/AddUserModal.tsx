@@ -2,6 +2,7 @@ import {useState} from "react";
 import {User} from "../../data/users";
 import React from "react";
 import {Button} from "../atoms/Button";
+import CloseIcon from "../../assets/images/icon_close.svg";
 
 
 interface Props {
@@ -45,7 +46,9 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
             <div className={'add-user-modal__content'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>Создание пользователя</div>
-                    <div onClick={closeModal} className={'modal__close'}>X</div>
+                    <div className={'modal__close'} onClick={closeModal}>
+                        <img src={CloseIcon} alt="close"/>
+                    </div>
                 </div>
                 <div className={'modal__content'}>
                     <form onSubmit={handleSubmit}>

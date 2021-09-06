@@ -1,6 +1,7 @@
 import {Button} from "../atoms/Button";
 import React, { useState } from "react";
 import {User} from "../../data/users";
+import CloseIcon from "../../assets/images/icon_close.svg";
 
 interface Props {
     userData: User;
@@ -28,7 +29,9 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
             <div className={'edit-user-modal__content'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>Редактирование пользователя</div>
-                    <div className={'modal__close'} onClick={closeModal}>X</div>
+                    <div className={'modal__close'} onClick={closeModal}>
+                        <img src={CloseIcon} alt="close"/>
+                    </div>
                 </div>
                 <div className={'modal__content'}>
                     <form onSubmit={handleSubmit}>

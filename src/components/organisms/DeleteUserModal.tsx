@@ -20,7 +20,6 @@ export const DeleteUserModal = ({ userData, deleteUser, closeModal }: Props) => 
             <div className={'delete-user-modal__content'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>Удаление пользователя</div>
-                    <div className={'modal__close'} onClick={closeModal}>X</div>
                 </div>
                 <div className={'modal__content'}>
                     <form onSubmit={handleSubmit}>

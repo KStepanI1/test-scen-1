@@ -14,10 +14,10 @@
 .delete-user-modal__content {
   display: flex;
   flex-direction: column;
-  width: 606px;
   background-color: #FFFFFF;
-
+  border-radius: 10px;
   .modal__header {
+    border-radius: 10px 10px 0 0;
     display: flex;
     position: relative;
     width: 100%;
@@ -26,23 +26,12 @@
     justify-content: center;
     background-color: var(--primary);
     color: #ffffff;
-    margin-bottom: 22px;
 
     .modal__title {
       font-size: 16px;
       line-height: 24px;
       font-weight: 500;
       letter-spacing: 0.02em;
-    }
-
-    .modal__close {
-      width: 9px;
-      height: 9px;
-      position: absolute;
-      line-height: 9px;
-      top: 23.5px;
-      right: 29.5px;
-      cursor: pointer;
     }
   }
 
@@ -54,11 +43,15 @@
     padding: 72px 162px;
     font-size: 16px;
     line-height: 24px;
+    letter-spacing: 0.02em;
   }
 
   .cancel {
-    color: var(--how-much-color);
-    background-color: var(--button-gray-color);
+
+    .button__text {
+      color: var(--blue-gray100);
+    }
+    background-color: var(--blue-gray10);
   }
 
   .modal__footer {
@@ -66,12 +59,13 @@
     justify-content: flex-end;
 
     height: 60px;
-    background-color: var(--gray);
+    background-color: var(--white10);
     width: 100%;
-    margin-top: 42px;
 
+    border-radius: 0 0 10px 10px;
     .button {
       margin: 12px 24px 12px 0;
+      padding: 8px 48px;
     }
   }
 }

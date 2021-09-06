@@ -2,7 +2,7 @@ import {Header} from "../organisms/Header";
 import {SideBar} from "../organisms/SideBar";
 import {Button} from "../atoms/Button";
 import {initialUsers, User} from "../../data/users";
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import TrashIcon from "../../assets/images/icon_trash.svg";
 import PencilIcon from "../../assets/images/icon_pencil.svg";
 import PlusIcon from "../../assets/images/icon_plus.svg";
@@ -18,51 +18,49 @@ export const UsersPage = (): JSX.Element => {
     const [editingUser, setEditingUser] = useState<User | null>(null);
     const [deletingUser, setDeletingUser] = useState<User | null>(null);
 
-    const onAddButtonClick = () => {
+    const onAddButtonClick = useCallback(() => {
         setAddUserModalOpen(true);
-    };
+    }, []);
 
-    function onEditButtonClick(this: User) {
+    const onEditButtonClick = useCallback(function (this: User) {
         setEditingUser(this);
         setEditUserModalOpen(true);
-    }
+    }, [])
 
-    function onDeleteButtonClick(this: User) {
+    const onDeleteButtonClick = useCallback(function (this: User) {
         setDeletingUser(this);
         setDeleteUserModalOpen(true);
-    }
+    }, [])
 
-    const addUser = (userData: User) => {
+    const addUser = useCallback((userData: User) => {
         setUsers([userData, ...users]);
-    }
+    }, [users])
 
-    const updateUser = (updatedUserData: User) => {
+    const updateUser = useCallback((updatedUserData: User) => {
         let copyUsers = [...users];
         const user = users.find((e) => e.id === updatedUserData.id)
-        let userIndex: number = -1;
-        if (user !== undefined) {
-            userIndex = users.indexOf(user);
-        }
+        const userIndex = user === undefined
+            ? -1
+            : users.indexOf(user);
         if (userIndex !== -1) {
             copyUsers.splice(userIndex, 1, updatedUserData);
             setUsers(copyUsers);
         }
         setEditingUser(null);
-    }
+    }, [users])
 
-    const deleteUser = (userData: User) => {
+    const deleteUser = useCallback((userData: User) => {
         let copyUsers = [...users];
         const user = users.find((e) => e.id === userData.id)
-        let userIndex: number = -1;
-        if (user !== undefined) {
-            userIndex = users.indexOf(user);
-        }
+        const userIndex = user === undefined
+            ? -1
+            : users.indexOf(user);
         if (userIndex !== -1) {
             copyUsers.splice(userIndex, 1);
             setUsers(copyUsers);
         }
-        setEditingUser(null);
-    }
+        setDeletingUser(null);
+    }, [users])
 
     return (
         <div className={'users-page'}>
@@ -118,15 +116,18 @@ export const UsersPage = (): JSX.Element => {
                 </div>
                 {isAddUserModalOpen
                 && <AddUserModal addUser={addUser}
-                                 closeModal={() => setAddUserModalOpen(false)}/>}
+                                 closeModal={() => setAddUserModalOpen(false)}/>
+                }
                 {isEditUserModalOpen && editingUser
                 && <EditUserModal userData={editingUser}
                     closeModal={() => setEditUserModalOpen(false)}
-                                  updateUser={updateUser}/>}
+                                  updateUser={updateUser}/>
+                }
                 {isDeleteUserModalOpen && deletingUser
                 && <DeleteUserModal deleteUser={deleteUser}
                                     userData={deletingUser}
-                                    closeModal={() => setDeleteUserModalOpen(false)} />}
+                                    closeModal={() => setDeleteUserModalOpen(false)} />
+                }
             </main>
         </div>
     );

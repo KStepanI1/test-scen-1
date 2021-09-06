@@ -1,5 +1,5 @@
 import {Button} from "../atoms/Button";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {User} from "../../data/users";
 import CloseIcon from "../../assets/images/icon_close.svg";
 
@@ -9,7 +9,7 @@ interface Props {
     closeModal: any;
 }
 
-export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.Element => {
+export const EditUserModal = ({userData, updateUser, closeModal}: Props): JSX.Element => {
     const [updatedUserData, setUpdateUserData] = useState<User>(userData);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +35,8 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
                 </div>
                 <div className={'modal__content'}>
                     <form onSubmit={handleSubmit}>
-                        <label>
-                            <div className={'modal__field'}>
+                        <label htmlFor={'field-last'}>
+                            <div className={'modal__field'} id={'field-last'}>
                                 <div>Фамилия</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -45,7 +45,9 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
                                        placeholder={'Введите фамилию'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-first'}>
+                            <div className={'modal__field'} id={'field-first'}>
                                 <div>Имя</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -54,7 +56,9 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
                                        placeholder={'Введите имя'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-middle'}>
+                            <div className={'modal__field'} id={'field-middle'}>
                                 <div>Отчество</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -63,7 +67,9 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
                                        placeholder={'Введите отчество'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-email'}>
+                            <div className={'modal__field'} id={'field-email'}>
                                 <div>E-mail</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -72,7 +78,9 @@ export const EditUserModal = ({ userData, updateUser, closeModal }: Props): JSX.
                                        name={'email'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-login'}>
+                            <div className={'modal__field'} id={'field-login'}>
                                 <div>Логин</div>
                                 <input className={'modal__input'}
                                        type="text"

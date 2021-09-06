@@ -11,7 +11,7 @@ interface Props {
 }
 
 
-export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
+export const AddUserModal = ({addUser, closeModal}: Props): JSX.Element => {
     const [userData, setUserData] = useState<User>({
         id: Math.floor(Math.random() * 10000000),
         lastName: '',
@@ -52,8 +52,8 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
                 </div>
                 <div className={'modal__content'}>
                     <form onSubmit={handleSubmit}>
-                        <label>
-                            <div className={'modal__field'}>
+                        <label htmlFor={'field-last'}>
+                            <div className={'modal__field'} id={'field-last'}>
                                 <div>Фамилия</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -61,7 +61,9 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
                                        placeholder={'Введите фамилию'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-first'}>
+                            <div className={'modal__field'} id={'field-first'}>
                                 <div>Имя</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -69,7 +71,9 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
                                        placeholder={'Введите имя'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-middle'}>
+                            <div className={'modal__field'} id={'field-middle'}>
                                 <div>Отчество</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -77,7 +81,9 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
                                        placeholder={'Введите отчество'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-email'}>
+                            <div className={'modal__field'} id={'field-email'}>
                                 <div>E-mail</div>
                                 <input className={'modal__input'}
                                        type="text"
@@ -85,7 +91,9 @@ export const AddUserModal = ({ addUser, closeModal }: Props): JSX.Element => {
                                        name={'email'}
                                        onChange={handleChange}/>
                             </div>
-                            <div className={'modal__field'}>
+                        </label>
+                        <label htmlFor={'field-login'}>
+                            <div className={'modal__field'} id={'field-login'}>
                                 <div>Логин</div>
                                 <input className={'modal__input'}
                                        type="text"
